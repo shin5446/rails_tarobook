@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>思い出</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>内容</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blogs.each do |blog| %>
+      <tr>
+        <td><%= blog.title %></td>
+        <td><%= blog.content %></td>
+        <td><%= link_to '詳細を確認', blog %></td>
+        <td><%= link_to '編集する', edit_blog_path(blog) %></td>
+        <td><%= link_to '削除する', blog, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '新規投稿', new_blog_path %>
