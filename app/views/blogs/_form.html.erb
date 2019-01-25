@@ -1,4 +1,4 @@
-<%= form_with(model: blog, local: true ,url: confirm_blogs_path ) do |form| %>
+<%= form_with(model: blog, local: true ,url: choose_new_or_edit) do |form| %>
   <% if blog.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(blog.errors.count, "件のエラーがあります") %> 以下を確認して下さい</h2>
@@ -20,7 +20,17 @@
     <%= form.label :content %>
     <%= form.text_area :content, id: :blog_content %>
   </div>
-
+  
+  <div class="field">
+    <%= form.label :image %>
+    <!-- 確認画面から新規作成画面に戻った時に、 -->
+    <!-- アップロードした画像を表示させるための記述 -->
+    
+    <%= image_tag(blog.image.url) if blog.image.url %>
+    <%= form.file_field :image %>
+    <%= form.hidden_field :image_cache %>
+  </div>
+  
   <div class="actions">
     <%= form.submit %>
   </div>
