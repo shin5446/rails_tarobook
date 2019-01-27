@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, except: [:new, :create]
 
   # GET /blogs
   # GET /blogs.json
@@ -22,7 +23,7 @@ class BlogsController < ApplicationController
   end
   
   def confirm
-    @blog = Blog.new(blog_params)
+    @blog = current_user.blogs.build(blog_params)
     render :new if @blog.invalid?
   end
 
@@ -33,11 +34,11 @@ class BlogsController < ApplicationController
   # POST /blogs
   # POST /blogs.json
   def create
-    @blog = Blog.new(blog_params)
-
+   @blog = current_user.blogs.build(blog_params)
+   @user = @blog.user.name
     respond_to do |format|
       if @blog.save
-        format.html { redirect_to @blog, notice: '思い出が投稿されました！' }
+        format.html { redirect_to @blog, notice: '思い出が投稿されました' }
         format.json { render :show, status: :created, location: @blog }
       else
         format.html { render :new }
@@ -79,6 +80,13 @@ class BlogsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def blog_params
       params.require(:blog).permit(:title, :content,:image, :image_cache)
+    end
+    
+    def require_login
+     unless logged_in?
+      flash[:error] = "投稿するにはログインをしてください"
+      redirect_to new_session_url 
+     end
     end
   
 end

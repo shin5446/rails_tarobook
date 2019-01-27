@@ -8,6 +8,7 @@
   <%= image_tag(@blog.image.url) %>
   <%= form.hidden_field :image_cache %>
   <%= form.submit  "投稿する" %>
+  <p>ユーザー名:<%= @blog.user.name %></p>
 <% end %>
 
 <%= form_with(model:@blog, url:new_blog_path, local:true, method:"get") do |form| %>

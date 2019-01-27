@@ -14,6 +14,7 @@
   <strong>Image:</strong>
   <%= image_tag @blog.image.url %>
 </p>
+<p>ユーザー名:<%= @blog.user.name %></p>
 
 <%= link_to '編集する', edit_blog_path(@blog) %> |
 <%= link_to '戻る', blogs_path %>
