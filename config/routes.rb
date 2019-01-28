@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/', to: 'top_page#index'
   resources :blogs do
     collection do
       post :confirm

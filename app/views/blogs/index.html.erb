@@ -1,6 +1,7 @@
+<div class = "blog_ists">
 <p id="notice"><%= notice %></p>
 
-<h1>思い出</h1>
+<h1 class = "index_memory">思い出</h1>
 
 <table>
   <thead>
@@ -16,9 +17,12 @@
       <tr>
         <td><%= blog.title %></td>
         <td><%= blog.content %></td>
-        <td><%= link_to '詳細を確認', blog %></td>
-        <td><%= link_to '編集する', edit_blog_path(blog) %></td>
-        <td><%= link_to '削除する', blog, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+        <td class="btn btn-primary"><%= link_to '詳細を確認', blog %></td>
+        
+        <% if current_user.try(:id) == blog.user_id %>
+        <td class="btn btn-primary"><%= link_to '編集する', edit_blog_path(blog) %></td>
+        <td class="btn btn-primary"><%= link_to '削除する', blog, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +30,6 @@
 
 <br>
 
-<%= link_to '新規投稿', new_blog_path %>
+<p class="btn btn-primary"><%= link_to '新規投稿', new_blog_path %></p>
+
+</div>

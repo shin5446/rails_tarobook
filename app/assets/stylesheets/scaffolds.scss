@@ -1,17 +1,17 @@
 body {
   background-color: #fff;
   color: #333;
-  margin: 33px;
+  margin: 0px;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
-}
+// p, ol, ul, td {
+//   font-family: verdana, arial, helvetica, sans-serif;
+//   font-size: 13px;
+//   line-height: 18px;
+// }
 
 pre {
   background-color: #eee;
@@ -20,16 +20,16 @@ pre {
 }
 
 a {
-  color: #000;
+  color: white;
 
   &:visited {
-    color: #666;
+    color: white;
   }
 
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
+  // &:hover {
+  //   color: #fff;
+  //   background-color: #000;
+  // }
 }
 
 th {
@@ -75,7 +75,7 @@ div {
 
   ul li {
     font-size: 12px;
-    list-style: square;
+    list-style: none;
   }
 }
 

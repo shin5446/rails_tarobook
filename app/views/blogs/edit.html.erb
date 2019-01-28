@@ -1,6 +1,8 @@
+<div class = "edit_page">
 <h1>編集しよう</h1>
 
 <%= render 'form', blog: @blog %>
 
-<%= link_to '詳細をみる', @blog %> |
-<%= link_to '戻る', blogs_path %>
+<p class="btn btn-primary"><%= link_to '詳細をみる', @blog %></p>
+<p class="btn btn-primary"><%= link_to '戻る', blogs_path %></p>
+</div>

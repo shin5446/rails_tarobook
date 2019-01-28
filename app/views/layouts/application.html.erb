@@ -9,19 +9,30 @@
   </head>
 
   <body>
-    <h1>Tarobook</h1>
+  <div id="wrapper">
+   <header>
+    <h1 class = "logo">tarobook</h1>
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
    
     <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
-      <%= link_to "新規投稿", new_blog_path %>
+      <p class="btn btn-primary btn-sm"><%= link_to "Profile", user_path(current_user.id) %></p>
+      <p class="btn btn-primary btn-sm"><%= link_to "Logout", session_path(current_user.id), method: :delete %></p>
+      <p class="btn btn-primary btn-sm"><%= link_to "新規投稿", new_blog_path %></p>
     <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
+      <p class="btn btn-primary btn-sm"><%= link_to "Sign up", new_user_path %></p>
+      <p class="btn btn-primary btn-sm"><%= link_to "Login", new_session_path %></p>
     <% end %>
+   </header>
     <%= yield %>
+    <div class = "foorter_logo">
+      <li>利用規約</li>
+      <li>採用情報</li>
+      <li>Tarobookについて</li>
+      <li>ヘルプ</li>
+      <li class = "establishment">©2050-2088 Increments Inc.</li>
+    </div>
+  </div>
   </body>
 </html>

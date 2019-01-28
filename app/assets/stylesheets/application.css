@@ -10,6 +10,83 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require bootstrap/dist/css/bootstrap.min
  *= require_tree .
  *= require_self
  */
+ body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+html {
+    margin : 0px;
+    
+}
+li,ul{
+    list-style: none;
+}
+ 
+ 
+header {
+    background-color : #3b5998;
+    width : 100%;
+    margin : 0px;
+    display : inline-block;
+}
+.logo{
+    color : white;
+    margin-left  : 50px;
+    margin-top: 30px;
+} 
+
+.btn-group-sm>.btn, .btn-sm {
+    float : right;
+    width: 100px;
+}
+h1 {
+   
+}
+
+.foorter_logo{
+    background-color: #C0C0C0 ;
+    float: left;
+    display: block;
+    width: 100%;
+    text-align: right;
+    margin-top: auto;
+}
+.establishment{
+    text-align: center;
+}
+
+a:hover { 
+    text-decoration: none;
+    
+}
+
+a {
+     display: block;
+     margin: 0 auto;
+     text-align: center;
+}
+
+p {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+input {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+}
+
+.btn-group-sm>.btn, .btn-sm.ecept{
+    width: 100px;
+    display: block;
+    margin: auto;
+}
