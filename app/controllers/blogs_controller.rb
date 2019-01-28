@@ -1,6 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
-  before_action :require_login, except: [:new, :create]
+  before_action :require_login,except: [:index]
+  before_action :correct_user, only: [:edit]
 
   # GET /blogs
   # GET /blogs.json
@@ -85,8 +86,15 @@ class BlogsController < ApplicationController
     def require_login
      unless logged_in?
       flash[:error] = "投稿するにはログインをしてください"
-      redirect_to new_session_url 
+      redirect_to new_session_path 
      end
     end
-  
+    
+    def correct_user
+      unless current_user.id == @blog.user_id
+        flash[:error] = "他人の投稿は編集できません"
+        redirect_to new_session_path
+      end
+    end
 end
+
