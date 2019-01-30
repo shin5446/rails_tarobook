@@ -73,27 +73,27 @@ class BlogsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_blog
-      @blog = Blog.find(params[:id])
-    end
+  def set_blog
+    @blog = Blog.find(params[:id])
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def blog_params
+  def blog_params
       params.require(:blog).permit(:title, :content,:image, :image_cache)
-    end
+  end
     
-    def require_login
-     unless logged_in?
+  def require_login
+    unless logged_in?
       flash[:error] = "投稿するにはログインをしてください"
       redirect_to new_session_path 
-     end
     end
+  end
     
-    def correct_user
-      unless current_user.id == @blog.user_id
+  def correct_user
+    unless current_user.id == @blog.user_id
         flash[:error] = "他人の投稿は編集できません"
         redirect_to new_session_path
-      end
     end
+  end
 end
 
